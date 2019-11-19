@@ -3,3 +3,17 @@
     background-color: aqua;
     margin-bottom: 0px;
   }
+  .car-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    border-bottom: 1px solid #d9dad9;
+}
+.text-center{
+  text-align: center;
+}
+.login-box{
+  padding: 10px;
+  text-align: center;
+}

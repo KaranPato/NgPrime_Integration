@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -23,7 +24,9 @@ import { EmployeeListComponent } from './components/employee-list/employee-list.
   imports: [
     LayoutRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    CommonModule
   ]
 })
 export class LayoutModule { }

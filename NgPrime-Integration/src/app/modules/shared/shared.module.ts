@@ -7,6 +7,7 @@ import { PasswordModule } from 'primeng/password';
 import { PanelModule } from 'primeng/panel';
 import { MenubarModule } from 'primeng/menubar';
 import { TableModule } from 'primeng/table';
+import {DataViewModule} from 'primeng/dataview';
 
 @NgModule({
   imports: [
@@ -16,7 +17,10 @@ import { TableModule } from 'primeng/table';
     InputTextModule,
     PasswordModule,
     PanelModule,
-    MenubarModule],
+    MenubarModule,
+    TableModule,
+    DataViewModule
+  ],
 
   exports: [CardModule,
     CheckboxModule,
@@ -24,6 +28,9 @@ import { TableModule } from 'primeng/table';
     InputTextModule,
     PasswordModule,
     PanelModule,
-    MenubarModule]
+    MenubarModule,
+    TableModule,
+    DataViewModule
+  ]
 })
 export class SharedModule { }
