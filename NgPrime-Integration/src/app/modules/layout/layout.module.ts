@@ -7,8 +7,8 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
-import { CheckboxModule } from 'primeng/checkbox';
 import { FormsModule } from '@angular/forms';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 
 
 
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     FooterComponent,
     LayoutComponent,
-    LoginComponent],
+    LoginComponent,
+    EmployeeListComponent],
   imports: [
     LayoutRoutingModule,
     SharedModule,
