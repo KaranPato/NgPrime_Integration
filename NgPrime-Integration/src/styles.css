@@ -1,7 +1,13 @@
+@import '~ngx-toastr/toastr';
+
 .footer {
-    height: 50px;
-    background-color: aqua;
-    margin-bottom: 0px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: red;
+  color: white;
+  text-align: center;
   }
   .car-details {
     display: flex;

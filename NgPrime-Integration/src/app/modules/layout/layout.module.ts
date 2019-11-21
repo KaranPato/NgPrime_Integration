@@ -7,10 +7,11 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AddEditEmployeeComponent } from './components/add-edit-employee/add-edit-employee.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -20,13 +21,18 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     LayoutComponent,
     LoginComponent,
-    EmployeeListComponent],
+    EmployeeListComponent,
+    AddEditEmployeeComponent],
   imports: [
     LayoutRoutingModule,
     SharedModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+    })
   ]
 })
 export class LayoutModule { }
