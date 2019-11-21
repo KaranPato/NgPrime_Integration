@@ -1,4 +1,7 @@
-<p-card header="Add/Edit Employee" class="login-box" [style]="{width: '360px', marginTop: '150px', marginLeft: '450px'}"
+<button pButton type="button" label="Back" icon="pi pi-chevron-left" style="margin-right: .25em"
+    [routerLink]="['/layout']"></button>
+
+<p-card header="{{buttonText}}" class="login-box" [style]="{width: '360px', marginTop: '150px', marginLeft: '450px'}"
     styleClass="ui-card-shadow">
     <p-header>
     </p-header>
@@ -15,12 +18,13 @@
             </span>
             <br>
             <span class="ui-float-label">
-                <input id="float-input"  formControlName="lastName" type="text" size="30" pInputText>
+                <input id="float-input" formControlName="lastName" type="text" size="30" pInputText>
                 <label for="float-input">LastName</label>
             </span>
         </div>
         <p-footer>
-            <button pButton type="submit" label="Add" icon="pi pi-check" style="margin-right: .25em"></button>
+            <button pButton type="submit" label="{{buttonText}}" icon="pi pi-check"
+                style="margin-right: .25em"></button>
         </p-footer>
     </form>
 </p-card>

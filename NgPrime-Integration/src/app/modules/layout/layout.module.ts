@@ -29,10 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     HttpClientModule,
     CommonModule,
-    ReactiveFormsModule,
-    ToastrModule.forRoot({
-      timeOut: 5000,
-    })
+    ReactiveFormsModule
   ]
 })
 export class LayoutModule { }

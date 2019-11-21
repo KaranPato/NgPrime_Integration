@@ -1,17 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { User } from 'src/app/common/common';
 import { UserService } from 'src/app/services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
+  styleUrls: ['./employee-list.component.css'],
+  preserveWhitespaces: true
 })
 export class EmployeeListComponent implements OnInit {
   users: User[];
   cols: any[];
 
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    @Inject(ToastrService) private toastr
+  ) { }
 
   ngOnInit() {
     this.userService.getUsers().subscribe((data: any) => {
@@ -24,6 +29,16 @@ export class EmployeeListComponent implements OnInit {
       { field: 'last_name', header: 'last_name' },
       { field: 'avatar', header: 'avatar' }
     ];
+  }
+
+  deleteEmployee(id: number) {
+    if (id > 0) {
+      this.userService.deleteEmployee(id).subscribe(() => {
+        this.toastr.success("Deleted Successfully");
+      });
+    } else {
+      alert("Id not valid");
+    }
   }
 
 }

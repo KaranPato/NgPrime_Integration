@@ -14,7 +14,7 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'employee-list', component: EmployeeListComponent },
-      { path: 'add-edit-employee', component: AddEditEmployeeComponent },
+      { path: 'add-edit-employee/:id', component: AddEditEmployeeComponent },
       { path: '', redirectTo: 'employee-list', pathMatch: 'full' }
     ]
   }

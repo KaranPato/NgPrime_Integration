@@ -1,5 +1,6 @@
 <h2 class="text-center">Employee List</h2>
-<button pButton type="button" style="margin-right: .25em" [routerLink]="['/layout/add-edit-employee']" label="Add/Edit Employee"></button>
+<button pButton type="button" style="margin-right: .25em;" [routerLink]="['/layout/add-edit-employee', 0]"
+    label="Add Employee"></button>
 
 <p-dataView #dv [value]="users">
     <!-- <p-header>
@@ -34,7 +35,11 @@
                         </div>
                     </div>
                 </div>
-                <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, car)"></button>
+                <div>
+                    <button pButton type="button" icon="pi pi-pencil"
+                        [routerLink]="['/layout/add-edit-employee', user.id]"></button>
+                    <button pButton type="button" icon="pi pi-trash" (click)="deleteEmployee(user.id)"></button>
+                </div>
             </div>
         </div>
     </ng-template>
