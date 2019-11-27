@@ -7,7 +7,9 @@ import { PasswordModule } from 'primeng/password';
 import { PanelModule } from 'primeng/panel';
 import { MenubarModule } from 'primeng/menubar';
 import { TableModule } from 'primeng/table';
-import {DataViewModule} from 'primeng/dataview';
+import { DataViewModule } from 'primeng/dataview';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import {DataViewModule} from 'primeng/dataview';
     PanelModule,
     MenubarModule,
     TableModule,
-    DataViewModule
+    DataViewModule,
+    MessagesModule,
+    MessageModule
   ],
 
   exports: [CardModule,
@@ -30,7 +34,9 @@ import {DataViewModule} from 'primeng/dataview';
     PanelModule,
     MenubarModule,
     TableModule,
-    DataViewModule
+    DataViewModule,
+    MessagesModule,
+    MessageModule
   ]
 })
 export class SharedModule { }

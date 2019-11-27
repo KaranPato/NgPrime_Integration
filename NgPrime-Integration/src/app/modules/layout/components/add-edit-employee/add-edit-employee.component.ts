@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Messages } from 'src/app/common/messages';
 
 @Component({
   selector: 'app-add-edit-employee',
@@ -15,8 +16,9 @@ export class AddEditEmployeeComponent implements OnInit {
   employeeForm: FormGroup;
   data: any;
   employeeId: number;
-  buttonText: string = "Add Employee";
-  successMessage: string = "Added Successfully";
+  buttonText: string = Messages.addEmployee;
+  successMessage: string = Messages.addSuccess;
+  submitted: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -24,7 +26,8 @@ export class AddEditEmployeeComponent implements OnInit {
     @Inject(ToastrService) private toastr,
     private router: Router,
     private spinner: NgxSpinnerService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.employeeForm = this.fb.group({
@@ -36,8 +39,8 @@ export class AddEditEmployeeComponent implements OnInit {
     this.route.params.subscribe((data: any) => {
       this.employeeId = data['id'];
       if (this.employeeId > 0) {
-        this.buttonText = "Update Employee";
-        this.successMessage = "Updated Successfully";
+        this.buttonText = Messages.updateEmployee;
+        this.successMessage = Messages.updateSuccess;
         this.userService.getUserById(this.employeeId).subscribe((data: any) => {
           this.employeeForm.controls.email.setValue(data.data.email);
           this.employeeForm.controls.firstName.setValue(data.data.first_name);
@@ -47,8 +50,10 @@ export class AddEditEmployeeComponent implements OnInit {
     });
   }
 
+  get f() { return this.employeeForm.controls; }
 
   onSubmit() {
+    this.submitted = true;
 
     if (this.employeeForm.invalid)
       return;
@@ -78,7 +83,6 @@ export class AddEditEmployeeComponent implements OnInit {
       }
     },
       (err: HttpErrorResponse) => {
-        console.log(err);
         this.toastr.error(err.message, "Error");
       });
   }

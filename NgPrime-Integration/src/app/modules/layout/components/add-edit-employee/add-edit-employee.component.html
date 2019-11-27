@@ -1,4 +1,4 @@
-<button pButton type="button" label="Back" icon="pi pi-chevron-left" style="margin-right: .25em"
+<button pButton type="button" label="Back" icon="pi pi-chevron-left" style="margin-right: .25em; margin-left: 1270px;"
     [routerLink]="['/layout']"></button>
 
 <p-card header="{{buttonText}}" class="login-box" [style]="{width: '360px', marginTop: '150px', marginLeft: '450px'}"
@@ -11,16 +11,34 @@
                 <input id="float-input" formControlName="email" type="email" size="30" pInputText>
                 <label for="float-input">Email</label>
             </span>
+            <div *ngIf="submitted && f.email.errors">
+                <div *ngIf="f.email.errors.required">
+                    <p-message severity="error" text="Email is required" style="margin-top:30px"></p-message>
+                </div>
+                <div *ngIf="f.email.errors.email">
+                    <p-message severity="error" text="Invalid Email" style="margin-top:30px"></p-message>
+                </div>
+            </div>
             <br>
             <span class="ui-float-label">
                 <input id="float-input" formControlName="firstName" type="text" size="30" pInputText>
                 <label for="float-input">FirstName</label>
             </span>
+            <div *ngIf="submitted && f.firstName.errors">
+                <div *ngIf="f.firstName.errors.required">
+                    <p-message severity="error" text="FirstName is required" style="margin-top:30px"></p-message>
+                </div>
+            </div>
             <br>
             <span class="ui-float-label">
                 <input id="float-input" formControlName="lastName" type="text" size="30" pInputText>
                 <label for="float-input">LastName</label>
             </span>
+            <div *ngIf="submitted && f.lastName.errors">
+                <div *ngIf="f.lastName.errors.required">
+                    <p-message severity="error" text="LastName is required" style="margin-top:30px"></p-message>
+                </div>
+            </div>
         </div>
         <p-footer>
             <button pButton type="submit" label="{{buttonText}}" icon="pi pi-check"

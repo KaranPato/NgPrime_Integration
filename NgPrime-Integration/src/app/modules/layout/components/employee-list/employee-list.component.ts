@@ -1,7 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { User } from 'src/app/common/common';
+import { User, UserData } from 'src/app/common/common';
 import { UserService } from 'src/app/services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Messages } from 'src/app/common/messages';
 
 @Component({
   selector: 'app-employee-list',
@@ -10,8 +12,9 @@ import { ToastrService } from 'ngx-toastr';
   preserveWhitespaces: true
 })
 export class EmployeeListComponent implements OnInit {
-  users: User[];
+  users: UserData[];
   cols: any[];
+  userData: any;
 
   constructor(
     private userService: UserService,
@@ -19,9 +22,12 @@ export class EmployeeListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((data: any) => {
+    this.userService.getUsers().subscribe((data: User) => {
       this.users = data.data;
-    });
+    },
+      (err: HttpErrorResponse) => {
+        this.toastr.error(err.message, "Error");
+      });
 
     this.cols = [
       { field: 'email', header: 'email' },
@@ -34,10 +40,24 @@ export class EmployeeListComponent implements OnInit {
   deleteEmployee(id: number) {
     if (id > 0) {
       this.userService.deleteEmployee(id).subscribe(() => {
-        this.toastr.success("Deleted Successfully");
-      });
+        this.toastr.success(Messages.deleteSuccess);
+      },
+        (err: HttpErrorResponse) => {
+          this.toastr.error(err.message, "Error");
+        });
     } else {
       alert("Id not valid");
+    }
+  }
+
+  getDetail(id: number) {
+    if (id > 0) {
+      this.userService.getUserById(id).subscribe((data: any) => {
+        this.userData = data.data;
+      },
+        (err: HttpErrorResponse) => {
+          this.toastr.error(err.message, "Error");
+        });
     }
   }
 

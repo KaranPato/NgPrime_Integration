@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
@@ -11,18 +10,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddEditEmployeeComponent } from './components/add-edit-employee/add-edit-employee.component';
-import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    SidebarComponent,
     FooterComponent,
     LayoutComponent,
     LoginComponent,
     EmployeeListComponent,
-    AddEditEmployeeComponent],
+    AddEditEmployeeComponent
+  ],
   imports: [
     LayoutRoutingModule,
     SharedModule,

@@ -1,22 +1,34 @@
-<p-card header="Login" class="login-box"
-[style]="{width: '360px', marginTop: '150px', marginLeft: '450px'}"
- styleClass="ui-card-shadow">
+<p-card header="Login" class="login-box" [style]="{width: '360px', marginTop: '150px', marginLeft: '450px'}"
+    styleClass="ui-card-shadow">
     <p-header>
     </p-header>
     <div style="display:flex; align-items:center; flex-direction:column">
-        <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span> <input type="text" pInputText
-                placeholder="Username" />
-        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-user"></i></span>
+                <input type="text" pInputText placeholder="Username" formControlName="username"
+                    class="ng-dirty ng-invalid" />
+            </div>
+            <div *ngIf="submitted && f.username.errors">
+                <div *ngIf="f.username.errors.required">
+                    <p-message severity="error" text="Username is required" style="margin-top:30px"></p-message>
+                </div>
+            </div>
 
-        <br>
-        <div class="ui-inputgroup">
-            <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
-            <input type="password" pPassword placeholder="Password" />
-        </div>
+            <br>
+            <div class="ui-inputgroup">
+                <span class="ui-inputgroup-addon"><i class="pi pi-lock"></i></span>
+                <input type="password" pPassword placeholder="Password" formControlName="password"
+                    class="ng-dirty ng-invalid" />
+            </div>
+            <div *ngIf="submitted && f.password.errors">
+                <div *ngIf="f.password.errors.required">
+                    <p-message severity="error" text="Password is required" style="margin-top:30px"></p-message>
+                </div>
+            </div>
+            <p-footer>
+                <button pButton type="submit" label="Login" icon="pi pi-check" style="margin-right: .25em"></button>
+            </p-footer>
+        </form>
     </div>
-    <p-footer>
-        <button pButton type="button" label="Login" icon="pi pi-check" style="margin-right: .25em"
-            [routerLink]="['/layout']"></button>
-    </p-footer>
 </p-card>
